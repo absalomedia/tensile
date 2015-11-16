@@ -5,12 +5,12 @@ if test "$PHP_TENSILE" != "no"; then
   PHP_ADD_INCLUDE(lib/tensorflow)
   PHP_ADD_LIBRARY_WITH_PATH(tensile, lib/libexec, LIBTENSILE_SHARED_LIBADD)
 
-  LDFLAGS="-lsass -L"`pwd`"/lib/tensorflow/core/ -lstdc++"
+  LDFLAGS="-lsass -L"`pwd`"/lib/tensorflow/tensorflow/core/ -lstdc++"
 
   # manually extract sass version as the non-autotool'ed
   # tensile_version.h that comes with libsass doesn't contain
   # the version
-  tensile_version=$(cd lib/tensorflow && ./version.sh)
+  tensile_version=$(cd lib/tensorflow/ && ./version.sh)
 
   if test "x$tensile_version" != "x" ; then
       # escape hell. This is what we need to pass to the
