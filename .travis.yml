@@ -1,0 +1,25 @@
+sudo: required
+dist: trusty
+
+language: cpp
+
+compiler:
+  - gcc
+
+env:
+  global:
+    - PATH=$HOME/output/bazel/:$PATH
+
+before_install: 
+- sudo add-apt-repository ppa:webupd8team/java
+- sudo apt-get update
+- sudo apt-get install oracle-java8-installer
+- sudo apt-get install pkg-config zip g++ zlib1g-dev unzip
+- git clone https://github.com/bazelbuild/bazel.git
+- cd bazel
+- git checkout tags/0.1.1
+- ./compile.sh
+- sudo apt-get install python-numpy swig python-dev
+- cd ..
+- wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/cuda-repo-ubuntu1404_7.0-28_amd64.deb
+- dpkg -i cuda-repo-ubuntu1404_7.0-28_amd64.deb
