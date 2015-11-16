@@ -23,5 +23,7 @@ before_install:
 - cd ..
 - wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/cuda-repo-ubuntu1404_7.0-28_amd64.deb
 - sudo dpkg -i cuda-repo-ubuntu1404_7.0-28_amd64.deb --root=/usr/local/cuda
+- git submodule init
+- git submodule update
 - cd lib/tensorflow
 - ./configure
