@@ -23,13 +23,11 @@ before_install:
 - ./compile.sh
 - sudo apt-get install -y python-numpy swig python-dev
 - cd ..
-- wget http://developer.download.nvidia.com/compute/cuda/7_0/Prod/local_installers/rpmdeb/cuda-repo-ubuntu1404-7-0-local_7.0-28_amd64.deb
-- sudo dpkg -i 
-- sudo apt-get update
-- sudo apt-get install cuda=7.0-28 
+- wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/cuda-repo-ubuntu1404_7.0-28_amd64.deb
+- sudo dpkg -i cuda-repo-ubuntu1404_7.0-28_amd64.deb
 - wget https://s3-eu-west-1.amazonaws.com/christopherbourez/public/cudnn-6.5-linux-x64-v2.tgz
-- tar cudnn-6.5-linux-x64-v2.tgz
-- rm xvzf cudnn-6.5-linux-x64-v2.tgz
+- tar xf cudnn-6.5-linux-x64-v2.tgz
+- rm cudnn-6.5-linux-x64-v2.tgz
 - sudo cp cudnn-6.5-linux-x64-v2/cudnn.h /usr/local/cuda-7.5/include/
 - sudo cp cudnn-6.5-linux-x64-v2/libcudnn* /usr/local/cuda-7.5/lib64/
 - git submodule init
