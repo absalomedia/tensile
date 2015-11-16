@@ -743,7 +743,7 @@ static PHP_MINIT_FUNCTION(sass)
     zend_class_entry ce;
     zend_class_entry exception_ce;
 
-    INIT_CLASS_ENTRY(ce, "Sass", tensile_methods);
+    INIT_CLASS_ENTRY(ce, "Tensile", tensile_methods);
 
     tensile_ce = zend_register_internal_class(&ce TSRMLS_CC);
     tensile_ce->create_object = tensile_create_handler;
@@ -754,7 +754,7 @@ static PHP_MINIT_FUNCTION(sass)
     #endif
     tensile_handlers.clone_obj = NULL;
 
-    INIT_CLASS_ENTRY(exception_ce, "SassException", NULL);
+    INIT_CLASS_ENTRY(exception_ce, "TensileException", NULL);
 
     #if ZEND_MODULE_API_NO > 20131226
     tensile_exception_ce = zend_register_internal_class_ex(&exception_ce, tensile_get_exception_base(TSRMLS_C));
@@ -771,7 +771,7 @@ static PHP_MINIT_FUNCTION(sass)
     REGISTER_SASS_CLASS_CONST_LONG(STYLE_COMPACT, SASS_STYLE_COMPACT);
     REGISTER_SASS_CLASS_CONST_LONG(STYLE_COMPRESSED, SASS_STYLE_COMPRESSED);
 
-    REGISTER_STRING_CONSTANT("SASS_FLAVOR", SASS_FLAVOR, CONST_CS | CONST_PERSISTENT);
+    REGISTER_STRING_CONSTANT("TENSILE_FLAVOR", TENSILE_FLAVOR, CONST_CS | CONST_PERSISTENT);
 
 
     return SUCCESS;
@@ -780,26 +780,26 @@ static PHP_MINIT_FUNCTION(sass)
 static PHP_MINFO_FUNCTION(sass)
 {
     php_info_print_table_start();
-    php_info_print_table_row(2, "sass support", "enabled");
-    php_info_print_table_row(2, "version", SASS_VERSION);
-    php_info_print_table_row(2, "flavor", SASS_FLAVOR);
+    php_info_print_table_row(2, "Tensorflow support", "enabled");
+    php_info_print_table_row(2, "version", TENSILE_VERSION);
+    php_info_print_table_row(2, "flavor", TENSILE_FLAVOR);
     php_info_print_table_row(2, "libsass version", libtensile_version());
     php_info_print_table_end();
 }
 
 static zend_module_entry tensile_module_entry = {
     STANDARD_MODULE_HEADER,
-    "sass",
+    "tensile",
     NULL,
-    PHP_MINIT(sass),
+    PHP_MINIT(tensile),
     NULL,
     NULL,
     NULL,
-    PHP_MINFO(sass),
-    SASS_VERSION,
+    PHP_MINFO(tensile),
+    TENSILE_VERSION,
     STANDARD_MODULE_PROPERTIES
 };
 
-#ifdef COMPILE_DL_SASS
-ZEND_GET_MODULE(sass)
+#ifdef COMPILE_DL_TENSILE
+ZEND_GET_MODULE(tensile)
 #endif
