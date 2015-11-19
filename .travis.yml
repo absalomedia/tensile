@@ -16,7 +16,7 @@ env:
 before_install:
 - sudo add-apt-repository -y ppa:webupd8team/java &> /dev/null
 - sudo apt-get update -qq
-- sudo apt-get install -y oracle-java8-installer pkg-config zip g++ zlib1g-dev unzip php5-dev
+- sudo apt-get install -y oracle-java8-installer pkg-config zip g++ zlib1g-dev unzip php5-dev locate
 - git clone https://github.com/bazelbuild/bazel.git
 - cd bazel
 - git checkout tags/0.1.1
@@ -25,6 +25,7 @@ before_install:
 - cd ..
 - wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/cuda-repo-ubuntu1404_7.0-28_amd64.deb
 - sudo dpkg -i cuda-repo-ubuntu1404_7.0-28_amd64.deb
+- updatedb
 - locate cuda
 - wget https://s3-eu-west-1.amazonaws.com/christopherbourez/public/cudnn-6.5-linux-x64-v2.tgz
 - tar xf cudnn-6.5-linux-x64-v2.tgz
