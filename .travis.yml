@@ -25,7 +25,7 @@ before_install:
 - cd ..
 - wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/cuda-repo-ubuntu1404_7.0-28_amd64.deb
 - sudo dpkg -i cuda-repo-ubuntu1404_7.0-28_amd64.deb
-- updatedb
+- sudo updatedb
 - locate cuda
 - wget https://s3-eu-west-1.amazonaws.com/christopherbourez/public/cudnn-6.5-linux-x64-v2.tgz
 - tar xf cudnn-6.5-linux-x64-v2.tgz
