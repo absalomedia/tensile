@@ -26,12 +26,12 @@ before_install:
 - wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/cuda-repo-ubuntu1404_7.0-28_amd64.deb
 - sudo dpkg -i cuda-repo-ubuntu1404_7.0-28_amd64.deb
 - sudo updatedb
-- locate cuda
-- wget https://s3-eu-west-1.amazonaws.com/christopherbourez/public/cudnn-6.5-linux-x64-v2.tgz
-- tar xf cudnn-6.5-linux-x64-v2.tgz
-- rm cudnn-6.5-linux-x64-v2.tgz
-- sudo cp cudnn-6.5-linux-x64-v2/cudnn.h /usr/local/cuda-7.5/include/
-- sudo cp cudnn-6.5-linux-x64-v2/libcudnn* /usr/local/cuda-7.5/lib64/
+- #locate cuda
+- #wget https://s3-eu-west-1.amazonaws.com/christopherbourez/public/cudnn-6.5-linux-x64-v2.tgz
+- #tar xf cudnn-6.5-linux-x64-v2.tgz
+- #rm cudnn-6.5-linux-x64-v2.tgz
+- #sudo cp cudnn-6.5-linux-x64-v2/cudnn.h /usr/local/cuda-7.5/include/
+- #sudo cp cudnn-6.5-linux-x64-v2/libcudnn* /usr/local/cuda-7.5/lib64/
 - git submodule init
 - git submodule update
 - cd lib/tensorflow
