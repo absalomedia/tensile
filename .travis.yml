@@ -36,3 +36,4 @@ before_install:
 - git submodule update
 - cd lib/tensorflow
 - ./configure
+- bazel build //tensorflow/core
