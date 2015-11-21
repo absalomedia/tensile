@@ -37,3 +37,13 @@ before_install:
 - cd lib/tensorflow
 - ./configure
 - bazel build //tensorflow/core
+
+notifications:
+    on_success: never
+    on_failure: never
+
+os:
+  - linux
+
+matrix:
+  fast_finish: true
