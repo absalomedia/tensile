@@ -34,9 +34,10 @@ before_install:
 - #sudo cp cudnn-6.5-linux-x64-v2/libcudnn* /usr/local/cuda-7.5/lib64/
 - git submodule init
 - git submodule update
+- cp ${TRAVIS_BUILD_DIR}/BUILD  lib/tensorflow/tensorflow/BUILD
 - cd lib/tensorflow
 - ./configure
-- bazel build //tensorflow/core
+- bazel build -c opt //tensorflow:all
 
 notifications:
     on_success: never
