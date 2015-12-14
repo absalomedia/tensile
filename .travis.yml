@@ -18,9 +18,9 @@ before_install:
 - sudo add-apt-repository -y ppa:webupd8team/java &> /dev/null
 - sudo apt-get update -qq
 - sudo apt-get install -y oracle-java8-installer pkg-config zip g++ zlib1g-dev unzip php5-dev locate
-- wget https://github.com/bazelbuild/bazel/releases/download/{VER_BAZEL}/bazel-{VER_BAZEL}-jdk7-installer-linux-x86_64.sh
-- chmod +x bazel-{VER_BAZEL}-jdk7-installer-linux-x86_64.sh
-- ./bazel-{VER_BAZEL}-jdk7-installer-linux-x86_64.sh --user
+- wget https://github.com/bazelbuild/bazel/releases/download/${VER_BAZEL}/bazel-${VER_BAZEL}-jdk7-installer-linux-x86_64.sh
+- chmod +x bazel-${VER_BAZEL}-jdk7-installer-linux-x86_64.sh
+- ./bazel-${VER_BAZEL}-jdk7-installer-linux-x86_64.sh --user
 - sudo apt-get install -y python-numpy swig python-dev
 - cd ..
 - wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/cuda-repo-ubuntu1404_7.0-28_amd64.deb
