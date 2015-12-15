@@ -5,7 +5,9 @@ addons:
       - oracle-java8-installer
       - pkg-config 
       - zip 
-      - g++ 
+      - gcc-4.9
+      - g++-4.9
+      - automake1.9
       - zlib1g-dev 
       - unzip 
       - php5-dev 
