@@ -1,6 +1,8 @@
 sudo: false
 addons:
   apt:
+    sources:
+      - ubuntu-toolchain-r-test
     packages:
       - oracle-java8-installer
       - pkg-config 
