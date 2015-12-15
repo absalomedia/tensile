@@ -29,11 +29,12 @@ env:
   - PATH=$HOME/output/bazel/:$PATH 
   - TF_NEED_CUDA=0 
   - VER_BAZEL=0.1.2
+  - CC=gcc-4.8
+  - CXX=g++-4.8
 
 matrix:
   fast_finish: true
-  os: linux
-  env: CC=gcc-4.8 CXX=g++-4.8
+  os: linux 
 
 before_install:
 - wget https://github.com/bazelbuild/bazel/releases/download/${VER_BAZEL}/bazel-${VER_BAZEL}-jdk7-installer-linux-x86_64.sh
