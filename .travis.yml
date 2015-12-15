@@ -7,6 +7,7 @@ addons:
       - oracle-java8-installer
       - pkg-config 
       - zip 
+      - clang
       - gcc-4.8
       - g++-4.8
       - zlib1g-dev 
@@ -23,16 +24,16 @@ cache: ccache
 compiler:
   - gcc
 
-env:
-    - CXX=g++-4.8
-  global:
-    - PATH=$HOME/output/bazel/:$PATH
-    - TF_NEED_CUDA=0
-    - VER_BAZEL=0.1.2
-    - #CUDA_TOOLKIT_PATH=/usr/local/cuda-7.0
-    - #CUDNN_INSTALL_PATH=/usr/local/cuda-6.5
+matrix:
+  fast_finish: true
+  os: linux
+  env: CC=gcc-4.8 CXX=g++-4.8 PATH=$HOME/output/bazel/:$PATH TF_NEED_CUDA=0 VER_BAZEL=0.1.2
 
 before_install:
+- echo $CC
+- echo $CXX
+- clang --version
+- if [ "$CC" = "gcc-4.8" ]; then gcc-4.8 -v; else gcc -v; fi
 - wget https://github.com/bazelbuild/bazel/releases/download/${VER_BAZEL}/bazel-${VER_BAZEL}-jdk7-installer-linux-x86_64.sh
 - chmod +x bazel-${VER_BAZEL}-jdk7-installer-linux-x86_64.sh
 - ./bazel-${VER_BAZEL}-jdk7-installer-linux-x86_64.sh --user
@@ -45,9 +46,3 @@ before_install:
 notifications:
     on_success: never
     on_failure: never
-
-os:
-  - linux
-
-matrix:
-  fast_finish: true
