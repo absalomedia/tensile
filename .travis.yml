@@ -9,7 +9,6 @@ addons:
       - zlib1g-dev 
       - unzip 
       - php5-dev 
-      - locate
       - python-numpy 
       - swig 
       - python-dev
@@ -35,8 +34,7 @@ before_install:
 - mkdir lib/tensorflow/tensorflow/libtensorflow
 - cp ${TRAVIS_BUILD_DIR}/BUILD  lib/tensorflow/tensorflow/libtensorflow/BUILD
 - cd lib/tensorflow/tensorflow/libtensorflow
-- bazel build :libtensorflow.so
-- locate .so 
+- bazel build :libtensorflow.so --verbose-failures
 
 notifications:
     on_success: never
