@@ -34,7 +34,7 @@ before_install:
 - mkdir lib/tensorflow/tensorflow/libtensorflow
 - cp ${TRAVIS_BUILD_DIR}/BUILD  lib/tensorflow/tensorflow/libtensorflow/BUILD
 - cd lib/tensorflow/tensorflow/libtensorflow
-- bazel build :libtensorflow.so
+- bazel build --verbose_failures :libtensorflow.so
 
 notifications:
     on_success: never
