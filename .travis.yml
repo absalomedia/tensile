@@ -25,6 +25,8 @@ compiler:
 
 env:
   global:
+    - CXX=g++-4.8
+    - CC=gcc-4.8
     - PATH=$HOME/output/bazel/:$PATH
     - TF_NEED_CUDA=0
     - VER_BAZEL=0.1.2
