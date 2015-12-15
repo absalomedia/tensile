@@ -24,22 +24,31 @@ cache: ccache
 compiler:
   - gcc
 
+env:
+  global:
+  - PATH=$HOME/output/bazel/:$PATH 
+  - TF_NEED_CUDA=0 
+  - VER_BAZEL=0.1.2
+
 matrix:
   fast_finish: true
   os: linux
-  env: CC=gcc-4.8 CXX=g++-4.8 PATH=$HOME/output/bazel/:$PATH TF_NEED_CUDA=0 VER_BAZEL=0.1.2
+  env: CC=gcc-4.8 CXX=g++-4.8
 
 before_install:
-- echo $CC
-- echo $CXX
-- clang --version
-- if [ "$CC" = "gcc-4.8" ]; then gcc-4.8 -v; else gcc -v; fi
 - wget https://github.com/bazelbuild/bazel/releases/download/${VER_BAZEL}/bazel-${VER_BAZEL}-jdk7-installer-linux-x86_64.sh
 - chmod +x bazel-${VER_BAZEL}-jdk7-installer-linux-x86_64.sh
 - ./bazel-${VER_BAZEL}-jdk7-installer-linux-x86_64.sh --user
 - git submodule update --init --recursive
 - mkdir lib/tensorflow/tensorflow/libtensorflow
 - cp ${TRAVIS_BUILD_DIR}/BUILD  lib/tensorflow/tensorflow/libtensorflow/BUILD
+
+
+install:
+- echo $CC
+- echo $CXX
+- clang --version
+- if [ "$CC" = "gcc-4.8" ]; then gcc-4.8 -v; else gcc -v; fi
 - cd lib/tensorflow/tensorflow/libtensorflow
 - bazel build --verbose_failures :libtensorflow.so
 
