@@ -31,7 +31,7 @@ before_install:
 - #rm cudnn-6.5-linux-x64-v2.tgz
 - #sudo cp cudnn-6.5-linux-x64-v2/cudnn.h /usr/local/cuda-7.5/include/
 - #sudo cp cudnn-6.5-linux-x64-v2/libcudnn* /usr/local/cuda-7.5/lib64/
-- git submodule update --init
+- git submodule update --init --recursive
 - mkdir lib/tensorflow/tensorflow/libtensorflow
 - cp ${TRAVIS_BUILD_DIR}/BUILD  lib/tensorflow/tensorflow/libtensorflow/BUILD
 - cd lib/tensorflow/tensorflow/libtensorflow
