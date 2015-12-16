@@ -47,10 +47,10 @@ before_install:
 
 
 install:
+- if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
 - echo $CC
 - echo $CXX
 - clang --version
-- if [ "$CC" = "gcc-4.8" ]; then gcc-4.8 -v; else gcc -v; fi
 - cd lib/tensorflow/tensorflow/libtensorflow
 - bazel build --verbose_failures :libtensorflow.so
 
