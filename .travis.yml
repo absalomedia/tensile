@@ -41,6 +41,8 @@ before_install:
 - wget https://github.com/bazelbuild/bazel/releases/download/${VER_BAZEL}/bazel-${VER_BAZEL}-jdk7-installer-linux-x86_64.sh
 - chmod +x bazel-${VER_BAZEL}-jdk7-installer-linux-x86_64.sh
 - ./bazel-${VER_BAZEL}-jdk7-installer-linux-x86_64.sh --user
+- wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/cuda-repo-ubuntu1404_7.0-28_amd64.deb
+- dpkg -i cuda-repo-ubuntu1404_7.0-28_amd64.deb
 - git submodule update --init --recursive
 - mkdir lib/tensorflow/tensorflow/libtensorflow
 - cp ${TRAVIS_BUILD_DIR}/BUILD  lib/tensorflow/tensorflow/libtensorflow/BUILD
