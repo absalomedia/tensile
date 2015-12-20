@@ -23,7 +23,7 @@ language: cpp
 cache: ccache
 
 compiler:
-  - gcc
+  - gcc-4.8
 
 env:
   global:
@@ -49,10 +49,8 @@ before_install:
 
 
 install:
-- if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
 - echo $CC
 - echo $CXX
-- clang --version
 - cd lib/tensorflow/tensorflow/libtensorflow
 - bazel build --verbose_failures :libtensorflow.so
 
