@@ -52,7 +52,7 @@ install:
 - echo $CC
 - echo $CXX
 - cd lib/tensorflow/tensorflow/libtensorflow
-- bazel build --verbose_failures :libtensorflow.so
+- bazel build --verbose_failures :libtensorflow.so --spawn_strategy=standalone
 
 notifications:
     on_success: never
