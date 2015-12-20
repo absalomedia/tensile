@@ -29,7 +29,7 @@ env:
   global:
   - PATH=$HOME/output/bazel/:$PATH 
   - TF_NEED_CUDA=0 
-  - VER_BAZEL=0.1.1
+  - VER_BAZEL=0.1.2
   - CC=gcc-4.8
   - CXX=g++-4.8
 
@@ -52,7 +52,7 @@ install:
 - echo $CC
 - echo $CXX
 - cd lib/tensorflow/tensorflow/libtensorflow
-- bazel build --verbose_failures :libtensorflow.so --spawn_strategy=standalone
+- bazel build --verbose_failures :libtensorflow.so --spawn_strategy=standalone -genrule_strategy=standalone
 
 notifications:
     on_success: never
