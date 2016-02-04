@@ -44,13 +44,12 @@ before_install:
 - wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/cuda-repo-ubuntu1404_7.0-28_amd64.deb
 - sudo dpkg -i cuda-repo-ubuntu1404_7.0-28_amd64.deb
 - git submodule update --init --recursive
-- mkdir lib/tensorflow/tensorflow/libtensorflow
 
 
 install:
 - echo $CC
 - echo $CXX
-- cd lib/tensorflow/tensorflow/libtensorflow
+- cd lib/tensorflow/tensorflow
 - bazel build --verbose_failures :libtensorflow.so
 
 notifications:
