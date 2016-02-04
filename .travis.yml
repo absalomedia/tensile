@@ -45,14 +45,13 @@ before_install:
 - sudo dpkg -i cuda-repo-ubuntu1404_7.0-28_amd64.deb
 - git submodule update --init --recursive
 - mkdir lib/tensorflow/tensorflow/libtensorflow
-- cp ${TRAVIS_BUILD_DIR}/BUILD  lib/tensorflow/tensorflow/libtensorflow/BUILD
 
 
 install:
 - echo $CC
 - echo $CXX
 - cd lib/tensorflow/tensorflow/libtensorflow
-- bazel build --verbose_failures :libtensorflow.so --spawn_strategy=standalone --genrule_strategy=standalone
+- bazel build --verbose_failures :libtensorflow.so
 
 notifications:
     on_success: never
