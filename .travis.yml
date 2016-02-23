@@ -50,7 +50,7 @@ install:
 - echo $CC
 - echo $CXX
 - cd lib/tensorflow/tensorflow
-- bazel build --genrule_strategy=standalone --spawn_strategy=standalone :libtensorflow.so
+- bazel build --verbose_failures --genrule_strategy=standalone --spawn_strategy=standalone :libtensorflow.so
 
 notifications:
     on_success: never
