@@ -9,8 +9,8 @@ addons:
       - pkg-config 
       - zip 
       - clang
-      - gcc-4.8
-      - g++-4.8
+      - gcc-4.9
+      - g++-4.9
       - zlib1g-dev 
       - unzip 
       - php5-dev 
@@ -23,15 +23,15 @@ language: cpp
 cache: ccache
 
 compiler:
-  - gcc-4.8
+  - gcc-4.9
 
 env:
   global:
   - PATH=$HOME/output/bazel/:$PATH 
   - TF_NEED_CUDA=0 
-  - VER_BAZEL=0.1.5
-  - CC=gcc-4.8
-  - CXX=g++-4.8
+  - VER_BAZEL=0.3.1
+  - CC=gcc-4.9
+  - CXX=g++-4.9
 
 matrix:
   fast_finish: true
@@ -50,7 +50,7 @@ install:
 - echo $CC
 - echo $CXX
 - cd lib/tensorflow/tensorflow
-- bazel build --verbose_failures --genrule_strategy=standalone --spawn_strategy=standalone :libtensorflow.so
+- bazel build --genrule_strategy=standalone --spawn_strategy=standalone //tensorflow:libtensorflow.so
 
 notifications:
     on_success: never
