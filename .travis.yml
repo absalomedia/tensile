@@ -1,65 +1,24 @@
-sudo: true
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-      - llvm-toolchain-precise-3.6
-    packages:
-      - clang-3.6
-      - wget
-      - oracle-java8-installer
-      - pkg-config
-      - zip
-      - zlib1g-dev
-      - python-numpy
+sudo: required
 
-language: cpp
+services:
+  - docker
 
 compiler:
-  - gcc-4.9
+  - gcc
 
-jdk:
-  - oraclejdk8
-
-python:
-  - '2.7'
-
-
-env:
-  global:
-  - PATH=$HOME/output/bazel/:$PATH 
-  - TF_NEED_CUDA=0 
-  - VER_BAZEL=0.3.1
-  - CC=gcc-4.9
-  - CXX=g++-4.9
-
-matrix:
-  fast_finish: true
-  os: linux 
+group: edge
 
 before_install:
-- sudo apt-get install gcc-4.9 g++-4.9 cpp-4.9
-# Bazel hardcodes /usr/bin/gcc by default :s
-# https://github.com/bazelbuild/bazel/issues/649, https://github.com/tensorflow/tensorflow/issues/336 FML
-- sudo rm /usr/bin/gcc
-- sudo rm /usr/bin/g++
-- sudo rm /usr/bin/cpp
-- sudo ln -s /usr/bin/gcc-4.9 /usr/bin/gcc
-- sudo ln -s /usr/bin/g++-4.9 /usr/bin/g++
-- sudo ln -s /usr/bin/cpp-4.9 /usr/bin/cpp
-- /usr/bin/gcc --version
-- wget https://github.com/bazelbuild/bazel/releases/download/${VER_BAZEL}/bazel-${VER_BAZEL}-jdk7-installer-linux-x86_64.sh
-- sudo chmod +x bazel-${VER_BAZEL}-jdk7-installer-linux-x86_64.sh
-- ./bazel-${VER_BAZEL}-jdk7-installer-linux-x86_64.sh --user
-- git submodule update --init --recursive
+  - docker pull absalomedia/tensile
+  - docker ps -a
+  - docker info
 
-
-install:
-- echo $CC
-- echo $CXX
-- cd lib/tensorflow/tensorflow
-- bazel build --genrule_strategy=standalone --spawn_strategy=standalone //tensorflow:libtensorflow.so
+script:
+  - docker build -t absalomedia/tensile . 
 
 notifications:
     on_success: never
     on_failure: never
+
+os:
+  - linux
