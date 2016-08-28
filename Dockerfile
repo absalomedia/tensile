@@ -23,7 +23,7 @@ RUN rm -f /etc/service/sshd/down
 CMD ["/sbin/my_init"]
 
 RUN apt-get update \
-  && apt-get -y install wget curl python-software-properties unzip git build-essential python-numpy swig python-dev clang-3.6 oracle-java8-installer pkg-config zip zlib1g-dev \
+  && apt-get -y install wget curl python-software-properties unzip git build-essential python-numpy swig python-dev clang-3.6 pkg-config zip zlib1g-dev \
   && apt-get -y upgrade \
   && apt-get -y clean \
   && rm -rf /tmp/* /var/tmp/*
