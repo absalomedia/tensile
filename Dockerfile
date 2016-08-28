@@ -22,6 +22,8 @@ RUN rm -f /etc/service/sshd/down
 # Use baseimage-docker's init system.
 CMD ["/sbin/my_init"]
 
+RUN add-apt-repository ppa:webupd8team/java
+
 RUN apt-get update \
   && apt-get -y install wget curl unzip git build-essential python-numpy swig python-dev clang-3.6 oracle-java8-installer pkg-config zip zlib1g-dev \
   && apt-get -y upgrade \
