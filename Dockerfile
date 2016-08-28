@@ -22,13 +22,14 @@ RUN rm -f /etc/service/sshd/down
 # Use baseimage-docker's init system.
 CMD ["/sbin/my_init"]
 
-RUN add-apt-repository ppa:webupd8team/java
-
 RUN apt-get update \
-  && apt-get -y install wget curl unzip git build-essential python-numpy swig python-dev clang-3.6 oracle-java8-installer pkg-config zip zlib1g-dev \
+  && apt-get -y install wget curl python-software-properties unzip git build-essential python-numpy swig python-dev clang-3.6 oracle-java8-installer pkg-config zip zlib1g-dev \
   && apt-get -y upgrade \
   && apt-get -y clean \
   && rm -rf /tmp/* /var/tmp/*
+
+RUN add-apt-repository ppa:webupd8team/java \
+  && apt-get -y install oracle-java8-installer 
 
 RUN echo "Downloading Bazel v${VER_BAZEL} ..." && wget -qO - https://github.com/bazelbuild/bazel/releases/download/${VER_BAZEL}/bazel-${VER_BAZEL}-jdk7-installer-linux-x86_64.sh -C /tmp
 RUN echo "Setting up Bazel v${VER_BAZEL} ..." && sudo chmod +x /tmp/bazel-${VER_BAZEL}-jdk7-installer-linux-x86_64.sh
