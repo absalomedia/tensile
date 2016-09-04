@@ -31,7 +31,7 @@ RUN apt-get update \
 #RUN add-apt-repository ppa:webupd8team/java \
 #  && apt-get -y install oracle-java8-installer 
 
-RUN echo "Downloading Bazel v${VER_BAZEL} ..." && wget -qO - https://github.com/bazelbuild/bazel/releases/download/${VER_BAZEL}/bazel-${VER_BAZEL}-jdk7-installer-linux-x86_64.sh -C /tmp
+RUN echo "Downloading Bazel v${VER_BAZEL} ..." && cd /tmp && wget -qO - https://github.com/bazelbuild/bazel/releases/download/${VER_BAZEL}/bazel-${VER_BAZEL}-jdk7-installer-linux-x86_64.sh
 RUN echo "Setting up Bazel v${VER_BAZEL} ..." && sudo chmod +x /tmp/bazel-${VER_BAZEL}-jdk7-installer-linux-x86_64.sh
 RUN echo "Running Bazel v${VER_BAZEL} installer..." && cd /tmp && ./bazel-${VER_BAZEL}-jdk7-installer-linux-x86_64.sh --user
 
