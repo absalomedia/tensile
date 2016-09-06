@@ -3,7 +3,6 @@ MAINTAINER Lawrence Meckan <media@absalom.biz>
 
 # Set correct environment variables.
 ENV DOCKER_NAME rev_tensile
-ENV VER_BAZEL 0.3.1
 ENV DEBIAN_FRONTEND noninteractive
 ENV HOME /root
 ENV DEFAULT_TIMEZONE Australia/Brisbane
@@ -23,17 +22,21 @@ RUN rm -f /etc/service/sshd/down
 CMD ["/sbin/my_init"]
 
 RUN apt-get update \
-  && apt-get -y install wget curl python-software-properties unzip git build-essential python-numpy swig python-dev clang-3.6 pkg-config zip zlib1g-dev default-jdk \
+  && apt-get -y install wget curl python-software-properties unzip git build-essential clang-3.6 pkg-config zip zlib1g-dev default-jdk \
   && apt-get -y upgrade \
   && apt-get -y clean \
   && rm -rf /tmp/* /var/tmp/*
 
-#RUN add-apt-repository ppa:webupd8team/java \
-#  && apt-get -y install oracle-java8-installer 
+RUN echo "deb http://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
+RUN curl https://storage.googleapis.com/bazel-apt/doc/apt-key.pub.gpg | sudo apt-key add -
 
-RUN echo "Downloading Bazel v${VER_BAZEL} ..." && cd /tmp && wget -qO - https://github.com/bazelbuild/bazel/releases/download/${VER_BAZEL}/bazel-${VER_BAZEL}-jdk7-installer-linux-x86_64.sh
-RUN echo "Setting up Bazel v${VER_BAZEL} ..." && sudo chmod +x /tmp/bazel-${VER_BAZEL}-jdk7-installer-linux-x86_64.sh
-RUN echo "Running Bazel v${VER_BAZEL} installer..." && cd /tmp && ./bazel-${VER_BAZEL}-jdk7-installer-linux-x86_64.sh --user
+RUN add-apt-repository ppa:webupd8team/java \
+  && apt-get update \
+  && apt-get -y install oracle-java8-installer 
+
+RUN apt-get update && sudo apt-get install bazel \
+  && apt-get upgrade bazel \
+  && apt-get install python-numpy swig python-dev python-wheel
 
 WORKDIR /usr/src
 
