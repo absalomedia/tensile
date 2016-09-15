@@ -22,7 +22,7 @@ RUN rm -f /etc/service/sshd/down
 CMD ["/sbin/my_init"]
 
 RUN apt-get update \
-  && apt-get -y install wget curl python-software-properties unzip git build-essential clang-3.6 pkg-config zip zlib1g-dev default-jdk \
+  && apt-get -y install wget curl python-software-properties curl unzip git build-essential clang-3.6 pkg-config zip zlib1g-dev default-jdk \
   && apt-get -y upgrade \
   && apt-get -y clean \
   && rm -rf /tmp/* /var/tmp/*
