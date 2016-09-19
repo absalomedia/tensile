@@ -25,28 +25,24 @@ RUN apt-get update \
   && apt-get -y install wget curl python-software-properties curl unzip git build-essential clang-3.6 pkg-config zip zlib1g-dev default-jdk \
   && apt-get -y upgrade \
   && apt-get -y clean \
-  && rm -rf /tmp/* /var/tmp/*
+  && rm -rf /tmp/* /var/tmp/* \
+  && apt-get -y install software-properties-common
 
-RUN apt-get update && \
-    curl https://get.docker.com/builds/Linux/x86_64/docker-1.9.1 > /usr/bin/docker && chmod +x /usr/bin/docker && \
+RUN curl https://get.docker.com/builds/Linux/x86_64/docker-1.9.1 > /usr/bin/docker && chmod +x /usr/bin/docker
 
-    # This makes add-apt-repository available.
-    apt-get -y install software-properties-common && \
+RUN add-apt-repository ppa:webupd8team/java && \
+  apt-get update
 
-    add-apt-repository ppa:webupd8team/java && \
-    apt-get update && \
+RUN echo "oracle-java7-installer shared/accepted-oracle-license-v1-1 boolean true"
+RUN echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
 
-    # Accept the installer license && \
-    echo "oracle-java7-installer shared/accepted-oracle-license-v1-1 boolean true" && \
-    echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
-
-    apt-get -y install oracle-java8-installer && \
+RUN apt-get -y install oracle-java8-installer && \
     echo "deb http://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list && \
     apt-get -y install curl && \
     curl https://storage.googleapis.com/bazel-apt/doc/apt-key.pub.gpg | apt-key add - && \
-    apt-get update && \
+    apt-get update
 
-    apt-get -y install bazel && \
+RUN apt-get -y install bazel && \
     apt-get upgrade bazel && \
     apt-get install python-numpy swig python-dev python-wheel && \
     # Unpack bazel for future use.
