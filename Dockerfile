@@ -22,7 +22,7 @@ RUN rm -f /etc/service/sshd/down
 CMD ["/sbin/my_init"]
 
 RUN apt-get update \
-  && apt-get -y install wget curl python-software-properties curl unzip git build-essential clang-3.6 pkg-config zip zlib1g-dev default-jdk \
+  && apt-get -y install wget curl python-software-properties curl unzip git build-essential clang-3.6 pkg-config zip zlib1g-dev default-jdk python-numpy swig python-dev python-wheel \
   && apt-get -y upgrade \
   && apt-get -y clean \
   && rm -rf /tmp/* /var/tmp/* \
@@ -43,10 +43,7 @@ RUN apt-get -y install oracle-java8-installer && \
     apt-get update
 
 RUN apt-get -y install bazel && \
-    apt-get upgrade bazel && \
-    apt-get install python-numpy swig python-dev python-wheel && \
-    # Unpack bazel for future use.
-    bazel version
+    apt-get upgrade bazel
 
 ENTRYPOINT ["bazel"]
 
