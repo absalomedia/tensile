@@ -1,6 +1,8 @@
 # Tensile
 Tensorflow as a PHP/Zend extension (experimental), using PHP5/PHP7. Still not in fully working state.
 
+[![Build Status](https://travis-ci.org/absalomedia/tensile.svg?branch=master)](https://travis-ci.org/absalomedia/tensile)
+
 # Concept
 
 The concept of this extension is to expose Tensorflow into PHP directly so you can run rules, training & the Tensorflow engine natively via PHP code. The coding structure replicates my work having SASS compile on the fly as a PHP extension.
