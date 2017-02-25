@@ -3,7 +3,7 @@
  * PHP bindings to Tensorflow
  *
  * https://github.com/absalomedia/tensile
- * Copyright (c)2015 Lawrence Meckan <http://absalom.biz>
+ * Copyright (c)2017 Lawrence Meckan <http://absalom.biz>
  *
  */
 
@@ -783,7 +783,7 @@ static PHP_MINFO_FUNCTION(sass)
     php_info_print_table_row(2, "Tensorflow support", "enabled");
     php_info_print_table_row(2, "version", TENSILE_VERSION);
     php_info_print_table_row(2, "flavor", TENSILE_FLAVOR);
-    php_info_print_table_row(2, "libsass version", libtensile_version());
+    php_info_print_table_row(2, "Tensorflow version", libtensile_version());
     php_info_print_table_end();
 }
 

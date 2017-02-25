@@ -7,6 +7,10 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV HOME /root
 ENV DEFAULT_TIMEZONE Australia/Brisbane
 
+# Tensorflow shared object
+ENV TF_TYPE=cpu # Set to gpu for GPU support
+ENV TF_OS=linux
+
 # Enable ssh access
 RUN rm -f /etc/service/sshd/down
 
@@ -30,24 +34,9 @@ RUN apt-get update \
 
 RUN curl https://get.docker.com/builds/Linux/x86_64/docker-1.9.1 > /usr/bin/docker && chmod +x /usr/bin/docker
 
-RUN add-apt-repository ppa:webupd8team/java && \
-  apt-get update
-
-RUN echo "oracle-java7-installer shared/accepted-oracle-license-v1-1 boolean true"
-RUN echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
-
-RUN apt-get -y install oracle-java8-installer && \
-    echo "deb http://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list && \
-    apt-get -y install curl && \
-    curl https://storage.googleapis.com/bazel-apt/doc/apt-key.pub.gpg | apt-key add - && \
-    apt-get update
-
-RUN apt-get -y install bazel && \
-    apt-get upgrade bazel
-
-ENTRYPOINT ["bazel"]
-
 WORKDIR /usr/src
+
+RUN curl -L \ "https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-${TF_TYPE}-${TF_OS}-x86_64-1.0.0.tar.gz" |sudo tar -C /usr/local -xz
 
 RUN git clone https://github.com/absalomedia/tensile.git && \
   cd tensile && \

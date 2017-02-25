@@ -14,7 +14,7 @@ if test "$PHP_TENSILE" != "no"; then
 
   if test "x$tensile_version" != "x" ; then
       # escape hell. This is what we need to pass to the
-      #  compiler: -DLIBTENSILE_VERSION="\"'3.3.2\""
+      #  compiler: -DLIBTENSILE_VERSION="\"'1.0.0\""
       CFLAGS="-DLIBTENSILE_VERSION=\"\\\"$tensile_version\\\"\" $CFLAGS"
       CXXFLAGS="-DLIBTENSILE_VERSION=\"\\\"$tensile_version\\\"\" $CXXFLAGS"
   fi

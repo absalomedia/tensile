@@ -23,7 +23,6 @@ configure
 configure.in
 conftest
 conftest.c
-include
 install-sh
 libtool
 ltmain.sh

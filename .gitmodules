@@ -1,4 +1,0 @@
-[submodule "lib/tensorflow"]
-	path = lib/tensorflow
-	url = https://github.com/tensorflow/tensorflow
-	branch = master
