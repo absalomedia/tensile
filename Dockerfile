@@ -40,6 +40,4 @@ RUN curl -L \ "https://storage.googleapis.com/tensorflow/libtensorflow/libtensor
 
 RUN git clone https://github.com/absalomedia/tensile.git && \
   cd tensile && \
-  git submodule update --init --recursive && \
-  cd lib/tensorflow/tensorflow && \
-  bazel build --genrule_strategy=standalone --spawn_strategy=standalone //tensorflow:libtensorflow.so
+  
