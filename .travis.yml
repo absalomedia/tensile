@@ -13,7 +13,6 @@ allow_failures:
 addons:
   apt:
     packages:
-      - php7-dev
       - php5-dev
       - gdb
 
