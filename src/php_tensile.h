@@ -23,7 +23,7 @@
 #include <Zend/zend_extensions.h>
 #include <Zend/zend_exceptions.h>
 
-#include <c_api.h>
+#include <../tensorflow/include/tensorflow/c/c_api.h>
 
 zend_class_entry *tensile_ce;
 zend_class_entry *tensile_exception_ce;
