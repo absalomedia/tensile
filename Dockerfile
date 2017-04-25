@@ -31,6 +31,6 @@ RUN git clone https://github.com/absalomedia/tensile.git && \
   cd tensile && \
   cd lib && \
   git clone --recurse-submodules -b r1.0 https://github.com/tensorflow/tensorflow && \
-  cd tensorflow && \
-  ./configure && \
-  bazel build -c opt tensorflow:libtensorflow.so
+  cd tensorflow
+RUN ./configure
+RUN bazel build -c opt tensorflow:libtensorflow.so
