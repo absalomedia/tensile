@@ -1,4 +1,4 @@
-FROM absalomedia/mini
+FROM absalomedia/bazel
 MAINTAINER Lawrence Meckan <media@absalom.biz>
 
 # Set correct environment variables.
@@ -25,19 +25,12 @@ RUN rm -f /etc/service/sshd/down
 # Use baseimage-docker's init system.
 CMD ["/sbin/my_init"]
 
-RUN apt-get update \
-  && apt-get -y install wget curl python-software-properties curl unzip git build-essential clang-3.6 pkg-config zip zlib1g-dev default-jdk python-numpy swig python-dev python-wheel \
-  && apt-get -y upgrade \
-  && apt-get -y clean \
-  && rm -rf /tmp/* /var/tmp/* \
-  && apt-get -y install software-properties-common
-
-RUN curl https://get.docker.com/builds/Linux/x86_64/docker-1.9.1 > /usr/bin/docker && chmod +x /usr/bin/docker
-
 WORKDIR /usr/src
-
-RUN curl -L \ "https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-${TF_TYPE}-${TF_OS}-x86_64-1.0.0.tar.gz" |sudo tar -C /usr/local -xz
 
 RUN git clone https://github.com/absalomedia/tensile.git && \
   cd tensile && \
-  
+  cd lib && \
+  git clone --recurse-submodules -b r1.0 https://github.com/tensorflow/tensorflow && \
+  cd tensorflow && \
+  ./configure && \
+  bazel build -c opt tensorflow:libtensorflow.so
