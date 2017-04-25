@@ -8,7 +8,7 @@ ENV HOME /root
 ENV DEFAULT_TIMEZONE Australia/Brisbane
 
 # Tensorflow shared object
-ENV TF_TYPE=cpu # Set to gpu for GPU support
+ENV TF_TYPE=cpu
 ENV TF_OS=linux
 
 # Enable ssh access

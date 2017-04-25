@@ -23,7 +23,7 @@
 #include <Zend/zend_extensions.h>
 #include <Zend/zend_exceptions.h>
 
-#include <../tensorflow/include/tensorflow/c/c_api.h>
+#include <../tensorflow/tensorflow/c/c_api.h>
 
 zend_class_entry *tensile_ce;
 zend_class_entry *tensile_exception_ce;
@@ -33,10 +33,7 @@ zend_class_entry *tensile_get_exception_base();
 PHP_METHOD(Tensile, __construct);
 PHP_METHOD(Tensile, compile);
 PHP_METHOD(Tensile, compileFile);
-PHP_METHOD(Tensile, getGPU);
-PHP_METHOD(Tensile, setGPU);
-PHP_METHOD(Tensile, getCuda);
-PHP_METHOD(Tensile, setCuda);
+PHP_METHOD(Tensile, getVersion);
 
 
 #endif
