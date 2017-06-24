@@ -3,7 +3,7 @@
  * PHP bindings to Tensorflow
  *
  * https://github.com/absalomedia/tensile
- * Copyright (c)2017 Lawrence Meckan <http://absalom.biz>
+ * Copyright (c) 2017 Lawrence Meckan <http://absalom.biz>
  *
  *
  */
@@ -19,21 +19,26 @@
 #define TENSILE_FLAVOR "Tonewood"
 
 #include <php.h>
+#include <php_ini.h>
+#include <SAPI.h>
 #include <ext/standard/info.h>
 #include <Zend/zend_extensions.h>
 #include <Zend/zend_exceptions.h>
+#include <Zend/zend_interfaces.h>
 
-#include <../tensorflow/tensorflow/c/c_api.h>
+#include <../includes/tensorflow/c/c_api.h>
 
 zend_class_entry *tensile_ce;
 zend_class_entry *tensile_exception_ce;
 
 zend_class_entry *tensile_get_exception_base();
 
-PHP_METHOD(Tensile, __construct);
-PHP_METHOD(Tensile, compile);
-PHP_METHOD(Tensile, compileFile);
-PHP_METHOD(Tensile, getVersion);
+#define TENSILE_NS "Tensile"
 
+static PHP_MINFO_FUNCTION(tensile);
+static PHP_MINIT_FUNCTION(tensile);
+static PHP_FUNCTION(debug);
+
+extern zend_module_entry tensile_module_entry;
 
 #endif
