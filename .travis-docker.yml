@@ -1,0 +1,24 @@
+sudo: required
+
+services:
+  - docker
+
+compiler:
+  - gcc
+
+group: edge
+
+before_install:
+  - docker pull absalomedia/tensile
+  - docker ps -a
+  - docker info
+
+script:
+  - docker build -t absalomedia/tensile . 
+
+notifications:
+    on_success: never
+    on_failure: never
+
+os:
+  - linux

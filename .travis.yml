@@ -1,24 +1,72 @@
-sudo: required
+language: php
+php:
+  - 5.4
+  - 5.5
+  - 5.6
+  - 7.0
+  - 7.1
+  - nightly
 
-services:
-  - docker
+allow_failures:
+    - php: nightly
+
+addons:
+  apt:
+    packages:
+      - php5-dev
+      - gdb
+
+env:
+  global:
+    # Configure the .phpt tests to be Travis friendly
+    - REPORT_EXIT_STATUS=1
+    - TEST_PHP_ARGS="-q -s output.txt -g XFAIL,FAIL,BORK,WARN,LEAK,SKIP -x --show-diff"
+    # Add the pip installation folder to the PATH, until https://github.com/travis-ci/travis-ci/issues/3563 is fixed
+    - PATH=$HOME/.local/bin:$PATH
 
 compiler:
   - gcc
 
-group: edge
+install:
+ # What is the current file size max for core files?
+ # It is usually 0, which means no core file will be dumped if there is a crash 
+ - ulimit -c
 
 before_install:
-  - docker pull absalomedia/tensile
-  - docker ps -a
-  - docker info
+  - echo $LANG
+  - echo $LC_ALL
+  - composer require satooshi/php-coveralls --dev
+
+before_script:
+  - travis_retry composer self-update
+  - composer config discard-changes true
+  - ulimit -c unlimited -S       # enable core dumps
 
 script:
-  - docker build -t absalomedia/tensile . 
+  - make clean
+  - phpize
+  - ./configure
+  - make
+  - echo "extension = tensile.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  - export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${TRAVIS_BUILD_DIR}/modules"
+  - make install
+  - mkdir -p build/logs
+  - phpunit --coverage-clover build/logs/clover.xml
+  - make test || RESULT=$?
+  - if [[ ${RESULT} == 0 ]]; then echo "\\o/ our test worked without problems"; else echo "ruhroh test returned an errorcode of $RESULT"; fi;
+  - for i in $(find ./ -maxdepth 1 -name 'core*' -print); do gdb $(pwd)/test core* -ex "thread apply all bt" -ex "set pagination 0" -batch; done;
+  - if [[ ${RESULT} != 0 ]]; then exit $RESULT ; fi;
+
+after_success:
+  - travis_retry php vendor/bin/coveralls
 
 notifications:
     on_success: never
     on_failure: never
 
+
 os:
   - linux
+
+matrix:
+  fast_finish: true

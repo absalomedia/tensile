@@ -5,7 +5,7 @@ check bundled Tensorflow version
 --FILE--
 <?php
 
-echo version_compare(Tensile::getVersion(), '1.0')
+echo version_compare(Tensile::getVersion(), '1.2.0')
 
 ?>
 --EXPECT--
