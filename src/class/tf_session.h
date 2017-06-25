@@ -9,7 +9,7 @@
 #include <Zend/zend_exceptions.h>
 #include <Zend/zend_interfaces.h>
 
-#include <../includes/tensorflow/c/c_api.h>// use this only
+#include <../include/tensorflow/c/c_api.h>// use this only
 #include "class_abstract.h"
 
 #include "tf_graph.h"

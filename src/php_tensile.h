@@ -26,7 +26,7 @@
 #include <Zend/zend_exceptions.h>
 #include <Zend/zend_interfaces.h>
 
-#include <includes/tensorflow/c/c_api.h>
+#include <include/tensorflow/c/c_api.h>
 
 zend_class_entry *tensile_ce;
 zend_class_entry *tensile_exception_ce;
