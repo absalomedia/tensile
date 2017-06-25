@@ -9,7 +9,7 @@
 #include <Zend/zend_exceptions.h>
 #include <Zend/zend_interfaces.h>
 
-#include <../../includes/tensorflow/c/c_api.h>// use this only
+#include <../includes/tensorflow/c/c_api.h>// use this only
 #include "class_abstract.h"
 
 #define TF_GRAPH_P_ZO(zo) ((t_tf_graph_object*)((char *)(zo) - XtOffsetOf(t_tf_graph_object, std)))
