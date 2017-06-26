@@ -20,7 +20,7 @@ extern zend_object_handlers oh_TF_SessionOptions;
 
 typedef struct _t_tf_session_options {
     TF_SessionOptions* src;
-    zend_string* str;
+    char* str;
     int ref;
 } t_tf_session_options;
 

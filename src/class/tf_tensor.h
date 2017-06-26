@@ -19,7 +19,7 @@
 
 typedef struct _t_tf_tensor {
     TF_Tensor* src;
-    zend_string* str;
+    char* str;
     int ref;
 } t_tf_tensor;
 

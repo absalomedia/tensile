@@ -23,7 +23,7 @@ extern zend_object_handlers oh_TF_OperationDescription;
 
 typedef struct _t_tf_operation_description {
     TF_OperationDescription* src;
-    zend_string* str;
+    char* str;
     int ref;
 } t_tf_operation_description;
 

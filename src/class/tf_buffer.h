@@ -20,7 +20,7 @@ extern zend_object_handlers oh_TF_Buffer;
 
 typedef struct _t_tf_buffer {
 	TF_Buffer* src;
-	zend_string* str;
+	char* str;
 	int ref;
 } t_tf_buffer;
 

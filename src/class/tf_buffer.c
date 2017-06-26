@@ -36,7 +36,7 @@ void define_tf_buffer_class()
 static PHP_METHOD(Tensile_Buffer, __construct)
 {
     // arguments
-    zend_string* buffer;
+    char* buffer;
 
     ZEND_PARSE_PARAMETERS_START(0, 1)
         Z_PARAM_OPTIONAL
@@ -73,7 +73,7 @@ static PHP_METHOD(Tensile_Buffer, __destruct)
 // extern TF_Buffer TF_GetBuffer(TF_Buffer* buffer);
 static PHP_METHOD(Tensile_Buffer, __toString)
 {
-    zend_string* result;
+    char* result;
 
     // this
     t_tf_buffer_object* intern;

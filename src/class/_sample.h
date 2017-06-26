@@ -20,7 +20,7 @@ extern zend_object_handlers oh_TF_Graph;
 
 typedef struct _t_tf_graph {
     TF_Graph* src;
-    zend_string* str;
+    char* str;
     int ref;
 } t_tf_graph;
 

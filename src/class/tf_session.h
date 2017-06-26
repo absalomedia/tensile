@@ -25,7 +25,7 @@ extern zend_object_handlers oh_TF_Session;
 
 typedef struct _t_tf_session {
     TF_Session* src;
-    zend_string* str;
+    char* str;
     int ref;
 } t_tf_session;
 

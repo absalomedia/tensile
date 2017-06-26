@@ -20,7 +20,7 @@ extern zend_object_handlers oh_TF_Status;
 
 typedef struct _t_tf_status {
 	TF_Status* src;
-	zend_string* str;
+	char* str;
 	int ref;
 } t_tf_status;
 
