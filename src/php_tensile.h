@@ -31,7 +31,7 @@ zend_class_entry *tensile_exception_ce;
 
 zend_class_entry *tensile_get_exception_base();
 
-#define TENSILE_VERSION "0.0.1-dev"
+#define TENSILE_VERSION "0.9.0"
 #define TENSILE_FLAVOR "Tonewood"
 
 #define TENSILE_NS "Tensile"

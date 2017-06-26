@@ -35,7 +35,7 @@ zend_module_entry tensile_module_entry = {
 #if ZEND_MODULE_API_NO >= 20010901
     STANDARD_MODULE_HEADER,
 #endif
-    TENSILE_FLAVOUR,
+    TENSILE_FLAVOR,
     tf_functions,
     PHP_MINIT(tensile),
     NULL, // name of the MSHUTDOWN function or NULL if not applicable
@@ -56,7 +56,7 @@ static PHP_MINFO_FUNCTION(tensile)
     php_info_print_table_start();
     php_info_print_table_row(2, "Tensorflow Support", "enabled");
     php_info_print_table_row(2, "Build", TENSILE_VERSION);
-    php_info_print_table_row(2, "Release", TENSILE_FLAVOUR);
+    php_info_print_table_row(2, "Release", TENSILE_FLAVOR);
     php_info_print_table_row(2, "Tensorflow version", TF_Version());
     php_info_print_table_end();    
     
