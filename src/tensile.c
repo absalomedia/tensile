@@ -62,7 +62,13 @@ static PHP_MINFO_FUNCTION(tensile)
     
     DISPLAY_INI_ENTRIES();
 }    
-    
+
+
+static PHP_FUNCTION(debug)
+{    
+
+    RETURN_STRING('Hello Dave');
+}
     
 static PHP_MINIT_FUNCTION(tensile)
 {
