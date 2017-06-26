@@ -15,8 +15,8 @@
 #include "config.h"
 #endif
 
-
 #include <php.h>
+
 #include <php_ini.h>
 #include <SAPI.h>
 #include <ext/standard/info.h>
@@ -34,15 +34,10 @@ zend_class_entry *tensile_get_exception_base();
 #define TENSILE_VERSION "0.0.1-dev"
 #define TENSILE_FLAVOR "Tonewood"
 
-#ifndef TENSORFLOW_VERSION
-#define TENSORFLOW_VERSION "unknown"
-#endif
-
 #define TENSILE_NS "Tensile"
 
 static PHP_MINFO_FUNCTION(tensile);
 static PHP_MINIT_FUNCTION(tensile);
-static PHP_FUNCTION(debug);
 
 extern zend_module_entry tensile_module_entry;
 

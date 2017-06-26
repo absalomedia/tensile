@@ -52,16 +52,14 @@ ZEND_GET_MODULE(tensile)
 
 static PHP_MINFO_FUNCTION(tensile)
 {
+    
     php_info_print_table_start();
-    php_info_print_table_row(2, "TensorFlow Support", "enabled");
-    php_info_print_table_row(2, "TensorFlow Module Version", TENSILE_VERSION);
-    php_info_print_table_end();
-
-    php_info_print_table_start();
-    php_info_print_table_header(3, "Version Info", "Compiled", "Linked");
-    php_info_print_table_row(3, "TensorFlow Library", TENSORFLOW_VERSION, TF_Version());
-    php_info_print_table_end();
-
+    php_info_print_table_row(2, "Tensorflow Support", "enabled");
+    php_info_print_table_row(2, "Build", TENSILE_VERSION);
+    php_info_print_table_row(2, "Release", TENSILE_FLAVOR);
+    php_info_print_table_row(2, "Tensorflow version", TF_Version());
+    php_info_print_table_end();    
+    
     DISPLAY_INI_ENTRIES();
 }    
     
