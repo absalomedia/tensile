@@ -35,7 +35,7 @@ zend_module_entry tensile_module_entry = {
 #if ZEND_MODULE_API_NO >= 20010901
     STANDARD_MODULE_HEADER,
 #endif
-    PHP_TENSILE_EXTNAME,
+    TENSILE_FLAVOUR,
     tf_functions,
     PHP_MINIT(tensile),
     NULL, // name of the MSHUTDOWN function or NULL if not applicable
@@ -43,13 +43,29 @@ zend_module_entry tensile_module_entry = {
     NULL, // name of the RSHUTDOWN function or NULL if not applicable
     PHP_MINFO(tensile),
 #if ZEND_MODULE_API_NO >= 20010901
-    PHP_TENSILE_VERSION,
+    TENSILE_VERSION,
 #endif
     STANDARD_MODULE_PROPERTIES
 };
 
 ZEND_GET_MODULE(tensile)
 
+static PHP_MINFO_FUNCTION(tensile)
+{
+    php_info_print_table_start();
+    php_info_print_table_row(2, "TensorFlow Support", "enabled");
+    php_info_print_table_row(2, "TensorFlow Module Version", TENSILE_VERSION);
+    php_info_print_table_end();
+
+    php_info_print_table_start();
+    php_info_print_table_header(3, "Version Info", "Compiled", "Linked");
+    php_info_print_table_row(3, "TensorFlow Library", TENSORFLOW_VERSION, TF_Version());
+    php_info_print_table_end();
+
+    DISPLAY_INI_ENTRIES();
+}    
+    
+    
 static PHP_MINIT_FUNCTION(tensile)
 {
     REGISTER_NS_STRING_CONSTANT("Tensile", "VERSION", (char *)TF_Version(), CONST_PERSISTENT | CONST_CS);
@@ -87,7 +103,3 @@ static PHP_MINIT_FUNCTION(tensile)
     return SUCCESS;
 }
 
-
-#ifdef COMPILE_DL_TENSILE
-ZEND_GET_MODULE(tensile)
-#endif

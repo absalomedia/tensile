@@ -15,8 +15,6 @@
 #include "config.h"
 #endif
 
-#define TENSILE_VERSION "0.0.1-dev"
-#define TENSILE_FLAVOR "Tonewood"
 
 #include <php.h>
 #include <php_ini.h>
@@ -32,6 +30,13 @@ zend_class_entry *tensile_ce;
 zend_class_entry *tensile_exception_ce;
 
 zend_class_entry *tensile_get_exception_base();
+
+#define TENSILE_VERSION "0.0.1-dev"
+#define TENSILE_FLAVOR "Tonewood"
+
+#ifndef TENSORFLOW_VERSION
+#define TENSORFLOW_VERSION "unknown"
+#endif
 
 #define TENSILE_NS "Tensile"
 
