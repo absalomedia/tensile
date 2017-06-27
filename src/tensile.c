@@ -64,10 +64,15 @@ static PHP_MINFO_FUNCTION(tensile)
 }    
 
 
+
 static PHP_FUNCTION(debug)
 {    
-
-    RETURN_STRING('Hello Dave');
+    #if PHP_MAJOR_VERSION < 7
+    RETURN_STRING("Hello Dave",0);
+    #else
+    RETURN_STRING("Hello Dave");
+    #endif
+    
 }
     
 static PHP_MINIT_FUNCTION(tensile)
