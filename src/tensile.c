@@ -7,13 +7,7 @@
  *
  */
 
-#include <stdio.h>
-#if ZEND_MODULE_API_NO > 20131226
-#include <stdlib.h>.
-#endif
-
 #include "php_tensile.h"
-#include "utilities.h"
 
 #include "class/tf_dtype.h"
 #include "class/tf_status.h"
