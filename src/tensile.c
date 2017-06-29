@@ -18,10 +18,12 @@
 #include "class/tf_session_options.h"
 #include "class/tf_session.h"
 
+
+
 // functions
 static zend_function_entry tf_functions[] = {
     ZEND_NS_FE("Tensile", debug, NULL)
-    ZEND_FE_END
+    PHP_FE_END
 };
 
 // the following code creates an entry for the module and registers it with Zend.
