@@ -22,8 +22,8 @@
 
 // functions
 static zend_function_entry tf_functions[] = {
-    ZEND_NS_FE("Tensile", NULL, NULL)
-    PHP_FE_END
+    ZEND_NS_FE("Tensile", debug, NULL)
+    ZEND_FE_END
 };
 
 // the following code creates an entry for the module and registers it with Zend.
@@ -58,7 +58,6 @@ static PHP_MINFO_FUNCTION(tensile)
     
     DISPLAY_INI_ENTRIES();
 }    
-
 
 
 static PHP_FUNCTION(debug)
