@@ -22,7 +22,7 @@
 
 // functions
 static zend_function_entry tf_functions[] = {
-    ZEND_NS_FE("Tensile", debug, NULL)
+    ZEND_NS_FE("Tensile", NULL, NULL)
     PHP_FE_END
 };
 
