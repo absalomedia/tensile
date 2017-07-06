@@ -5,7 +5,7 @@ if test "$PHP_TENSILE" != "no"; then
   PHP_ADD_INCLUDE(lib)
   PHP_ADD_LIBRARY_WITH_PATH(libtensorflow, lib/libexec, LIBTENSILE_SHARED_LIBADD)
 
-  LDFLAGS="-llibtensorflow -L"`pwd`"/include/tensorflow/c/ -lstdc++"
+  LDFLAGS="-L"`pwd`"/include/tensorflow/c/ -lstdc++"
 
 
   PHP_NEW_EXTENSION(tensile, src/tensile.c src/utilities.c, $ext_shared)
