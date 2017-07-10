@@ -52,7 +52,6 @@ static PHP_MINFO_FUNCTION(tensile)
     php_info_print_table_row(2, "Tensorflow Support", "enabled");
     php_info_print_table_row(2, "Build", TENSILE_VERSION);
     php_info_print_table_row(2, "Release", TENSILE_FLAVOR);
-    php_info_print_table_row(2, "Tensorflow version", TF_Version() );
     php_info_print_table_end();    
     
     DISPLAY_INI_ENTRIES();
