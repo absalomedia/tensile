@@ -52,7 +52,7 @@ static PHP_MINFO_FUNCTION(tensile)
     php_info_print_table_row(2, "Tensorflow Support", "enabled");
     php_info_print_table_row(2, "Build", TENSILE_VERSION);
     php_info_print_table_row(2, "Release", TENSILE_FLAVOR);
-    php_info_print_table_row(2, "Tensorflow version", TF_Version());
+    php_info_print_table_row(2, "Tensorflow version", VERSION);
     php_info_print_table_end();    
     
     DISPLAY_INI_ENTRIES();
@@ -71,7 +71,7 @@ static PHP_FUNCTION(debug)
     
 static PHP_MINIT_FUNCTION(tensile)
 {
-    REGISTER_NS_STRING_CONSTANT("Tensile", "VERSION", (char *)TF_Version(), CONST_PERSISTENT | CONST_CS);
+    REGISTER_NS_STRING_CONSTANT("Tensile", "VERSION", (char *) TF_Version(), CONST_PERSISTENT | CONST_CS);
 
     REGISTER_NS_LONG_CONSTANT("Tensile", "DTYPE_FLOAT", 1, CONST_PERSISTENT | CONST_CS);
     REGISTER_NS_LONG_CONSTANT("Tensile", "DTYPE_DOUBLE", 2, CONST_PERSISTENT | CONST_CS);
