@@ -7,18 +7,13 @@
  *
  */
 
+#include <stdio.h>
+#if ZEND_MODULE_API_NO > 20131226
+#include <stdlib.h>
+#endif
+
 #include "php_tensile.h"
-
-#include "class/tf_dtype.h"
-#include "class/tf_status.h"
-#include "class/tf_buffer.h"
-#include "class/tf_tensor.h"
-#include "class/tf_graph.h"
-#include "class/tf_operation_description.h"
-#include "class/tf_session_options.h"
-#include "class/tf_session.h"
-
-
+#include "utilities.h"
 
 // functions
 static zend_function_entry tf_functions[] = {
@@ -93,15 +88,10 @@ static PHP_MINIT_FUNCTION(tensile)
     REGISTER_NS_LONG_CONSTANT("Tensile", "DTYPE_COMPLEX128", 18, CONST_PERSISTENT | CONST_CS);
     REGISTER_NS_LONG_CONSTANT("Tensile", "DTYPE_HALF", 19, CONST_PERSISTENT | CONST_CS);
     REGISTER_NS_LONG_CONSTANT("Tensile", "DTYPE_RESOURCE", 20, CONST_PERSISTENT | CONST_CS);
+    REGISTER_NS_LONG_CONSTANT("Tensile", "DTYPE_VARIANT", 21, CONST_PERSISTENT | CONST_CS);
+    REGISTER_NS_LONG_CONSTANT("Tensile", "DTYPE_UINT32", 22, CONST_PERSISTENT | CONST_CS);
+    REGISTER_NS_LONG_CONSTANT("Tensile", "DTYPE_UINT64", 23, CONST_PERSISTENT | CONST_CS);
 
-    define_tf_status_class();
-    define_tf_buffer_class();
-    define_tf_tensor_class();
-    define_tf_graph_class();
-    define_tf_operation_description_class();
-    define_tf_session_options_class();
-    define_tf_session_class();
-
-    return SUCCESS;
+     return SUCCESS;
 }
 

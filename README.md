@@ -11,9 +11,9 @@ The concept of this extension is to expose Tensorflow into PHP directly so you c
 
 # Steps
 - [x] Build a base test image to test this build process (Travis/Docker)
-- [x] Build a shared library from Tensorflow that can then be wrapped into a PHP / Zend extension.
+- [x] Build a shared library off Tensorflow.
 - [ ] Refactor header classes from SASSPHP to deal with Tensorflow functions, variables & classes. 
 - [ ] Refactor C/C++ code to allow PHP classes to talk directly / manage Tensorflow once it's wrapped in shared library
 - [ ] Build tests
-- [ ] Gnomes
+- [ ] Build PHP stub
 - [ ] Profit
