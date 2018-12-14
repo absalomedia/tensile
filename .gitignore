@@ -39,3 +39,4 @@ run-tests.php
 test.php
 build/*
 lib/*
+include/*
