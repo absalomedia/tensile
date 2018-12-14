@@ -20,7 +20,7 @@ config.nice
 config.status
 config.sub
 configure
-configure.in
+configure.*
 conftest
 conftest.c
 install-sh
@@ -36,3 +36,4 @@ scan_makefile_in.awk
 *.ncb
 run-tests.php
 test.php
+build/*
