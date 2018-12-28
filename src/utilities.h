@@ -7,6 +7,8 @@
  *
  *
  */
+#ifndef UTILIES_H
+#define UTILIES_H
 
 char *trim(char *str);
 
