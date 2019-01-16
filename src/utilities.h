@@ -12,6 +12,7 @@
 
 char *trim(char *str);
 
+
 #define DEFINE_CLASS(Name, name, class_entry, object_handler) \
     zend_class_entry temp_ce; \
     INIT_NS_CLASS_ENTRY(temp_ce, "Tensile", #Name, tf_##name##_methods); \
@@ -55,4 +56,4 @@ char *trim(char *str);
     }
 
 
-#endif
+#endif /* UTILITIES_H */
