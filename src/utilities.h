@@ -1,3 +1,13 @@
+/**
+ * Tensile
+ * PHP bindings to Tensorflow
+ *
+ * https://github.com/absalomedia/tensile
+ * Copyright (c) 2017-2019 Lawrence Meckan <http://absalom.biz>
+ *
+ *
+ */
+
 #ifndef UTILIES_H
 #define UTILIES_H
 

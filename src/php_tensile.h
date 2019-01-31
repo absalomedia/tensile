@@ -3,10 +3,11 @@
  * PHP bindings to Tensorflow
  *
  * https://github.com/absalomedia/tensile
- * Copyright (c) 2017 Lawrence Meckan <http://absalom.biz>
+ * Copyright (c) 2017-2019 Lawrence Meckan <http://absalom.biz>
  *
  *
  */
+
 
 #ifndef PHP_TENSILE_H
 #define PHP_TENSILE_H

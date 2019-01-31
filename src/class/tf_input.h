@@ -10,7 +10,7 @@
 #include <Zend/zend_interfaces.h>
 
 #include <../include/tensorflow/c/c_api.h>// use this only
-#include "class_abstract.h"
+#include "../utilties.h"
 
 #define TF_INPUT_P_ZO(zo) ((t_tf_input_object*)((char *)(zo) - XtOffsetOf(t_tf_input_object, std)))
 #define TF_INPUT_P_ZV(zv) TF_INPUT_P_ZO(Z_OBJ_P(zv))
