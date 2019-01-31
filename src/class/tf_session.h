@@ -10,7 +10,7 @@
 #include <Zend/zend_interfaces.h>
 
 #include <../include/tensorflow/c/c_api.h>// use this only
-#include "../utilties.h"
+#include <../src/utilities.h>
 
 #include "tf_graph.h"
 #include "tf_status.h"

@@ -10,7 +10,7 @@
 #include <Zend/zend_interfaces.h>
 
 #include <../include/tensorflow/c/c_api.h>// use this only
-#include "../utilties.h"
+#include <../src/utilities.h>
 
 #define TF_STATUS_P_ZO(zo) ((t_tf_status_object*)((char *)(zo) - XtOffsetOf(t_tf_status_object, std)))
 #define TF_STATUS_P_ZV(zv) TF_STATUS_P_ZO(Z_OBJ_P(zv))

@@ -11,7 +11,8 @@
 #include <ext/spl/spl_exceptions.h>
 
 #include <../include/tensorflow/c/c_api.h>// use this only
-#include "../utilties.h"
+#include <../src/utilities.h>
+
 #include "tf_dtype.h"
 #include "tf_graph.h"
 

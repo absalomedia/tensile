@@ -10,7 +10,7 @@
 #include <Zend/zend_interfaces.h>
 #include <ext/spl/spl_exceptions.h>
 
-#include "../utilties.h"
+#include <../src/utilities.h>
 #include "tf_dtype.h"
 #include <../include/tensorflow/c/c_api.h>// use this only
 
