@@ -1,17 +1,7 @@
-/**
- * Tensile
- * PHP bindings to Tensorflow
- *
- * https://github.com/absalomedia/tensile
- * Copyright (c)2017 Lawrence Meckan <http://absalom.biz>
- *
- *
- */
 #ifndef UTILIES_H
 #define UTILIES_H
 
 char *trim(char *str);
-
 
 #define DEFINE_CLASS(Name, name, class_entry, object_handler) \
     zend_class_entry temp_ce; \
@@ -54,6 +44,5 @@ char *trim(char *str);
         } \
         zend_object_std_dtor(&intern->std TSRMLS_CC); \
     }
-
-
+    
 #endif /* UTILITIES_H */

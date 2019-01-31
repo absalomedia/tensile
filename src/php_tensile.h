@@ -56,8 +56,6 @@ typedef struct _t_tf_buffer_object {
 
 void define_tf_buffer_class();
 
-#endif	/* PHP_TENSILE_BUFFER_H */
-
 size_t tf_dtype_sizeof(TF_DataType type);
 
 char valid_dtype(int64_t dtype);
